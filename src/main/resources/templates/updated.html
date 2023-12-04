@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head th:replace="layout/layout ::  head">
+    <meta charset="UTF-8">
+    <title>Personal Data</title>
+</head>
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container">
+ <div class="row">
+     <div class="col-md-6 mx-auto text-primary-emphasis py-4">
+         <div class="card">
+             <div class="card-header">
+                 <div class="container">
+                     <div class="row">
+                         <div class="col"><h3>Personal data</h3></div>
+                         <div class="col">
+                             <a th:href="@{/}" type="button" class="btn btn-outline-secondary">
+                                 <i class="fa fa-caret-square-o-left"></i>
+                                 <span>Back</span>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div class="card-body">
+                 <form th:action="@{/savePerson}" method="post" th:object="${iPerson}">
+                     <div class="form-group">
+                         <label th:for="id">Id:</label>
+                         <input type="hidden" name="id" th:field="*{id}">
+                     </div>
+                     <div class="form-group">
+                         <label th:for="name">Name:</label>
+                         <input type="text" name="name" th:field="*{name}"/>
+                         <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name</span>
+                     </div>
+                     <div class="form-group">
+                         <label th:for="lastName">Last name:</label>
+                         <input type="text" name="lastName" th:field="*{lastName}"/>
+                         <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name</span>
+                     </div>
+                     <div class="form-group">
+                         <label th:for="email">Email:</label>
+                         <input type="text" name="email" th:field="*{email}"/>
+                         <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email</span>
+                     </div>
+                     <div class="form-group">
+                         <label th:for="phone">Phone:</label>
+                         <input type="text" name="phone" th:field="*{phone}"/>
+                     </div>
+                     <div class="d-grid gap-2 col-6 mx-auto">
+                         <input class="btn btn-outline-success bt-block" type="submit" name="save" value="save"/>
+                     </div>
+                 </form>
+             </div>
+         </div>
+
+     </div>
+ </div>
+</div>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

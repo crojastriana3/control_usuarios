@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head th:replace="layout/layout :: head">
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<header th:replace="layout/layout :: header">
+</header>
+<section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+        <div class="row"></div>
+    </div>
+</section>
+<section id="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto text-primary-emphasis" >
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Login</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" th:action="@{/login}">
+                            <div class="form-group">
+                                <label for="username">
+                                    <i class="fa fa-user-circle-o"></i>
+                                    <span>Username: </span>
+                                </label>
+                                <input type="text" name="username" id="username"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">
+                                    <i class="fa fa-unlock"></i>
+                                    <span>Password: </span>
+                                </label>
+                                <input type="password" name="password" id="password"/>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <input class="btn btn-outline-success bt-block" type="submit" value="Login"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+<footer th:replace="layout/layout :: footer"></footer>
+</html>

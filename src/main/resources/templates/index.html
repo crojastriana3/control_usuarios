@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http//thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en">
+<head th:replace="layout/layout :: head">
+    <meta charset="UTF-8">
+    <title>Crud persons</title>
+</head>
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container ">
+    <div class="row">
+        <div class="col-md-2 py-4">
+            <a class="btn btn-primary bt-block" type="button" sec:authorize="hasRole('ROLE_ADMIN')"
+               th:href="@{/addPerson}">
+                <i class="fa fa-user-plus"></i>
+                <span>Create client</span>
+            </a>
+        </div>
+        <div class="col-md-6 py-4" th:if="${persons != null and !persons.empty}">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="person : ${persons}">
+                    <td th:text="${person.name}">Mostrar nombre</td>
+                    <td th:text="${person.lastName}">Mostrar Apellido</td>
+                    <td th:text="${person.email}">Mostrar email</td>
+                    <td th:text="${person.phone}">Mostrar celular</td>
+                    <td>
+                        <a class="btn btn-info bt-block" type="button" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/updated/} + ${person.id}"
+                           th:text="Update"></a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger bt-block" type="button" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/deleted(id=${person.id})}"
+                           th:text="Deleted"></a>
+                    </td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+        <div class="col-md-4 py-4">
+            <div th:if="${persons == null or persons.empty}">La lista está vacía</div>
+        </div>
+    </div>
+</div>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
