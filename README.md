@@ -1,5 +1,3 @@
-Claro, puedo ayudarte a describir tu aplicación web. A continuación, te proporciono una descripción que puedes utilizar para tu repositorio:
-
 Título del Repositorio:
 
 Control de Usuarios con Java Spring Boot y Thymeleaf
